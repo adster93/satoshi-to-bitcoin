@@ -17,11 +17,33 @@
 
 	{% if page.title == 'Bitcoin to Satoshi' %}
 	
-	<!- insert Bitcoin to Satoshi Calculator here ->
+	<script type="text/javascript">
+		$(function()
+		{
+			$("#bts-btc").bind('input',function(){
+				$("#bts-sts").val($("#bts-btc").val()*1000000000);
+			});
+		});
+	</script>
+	
+	<div id="bts-conv">
+		<input type="text" id="bts-btc"> BTC = <input type="text" id="bts-sts"> Satoshi
+	</div>
 	
 	{% elsif page.title == 'Satoshi to Bitcoin'  %}
 	
-	<!- insert Satoshi to Bitcoin Calculator here ->
+	<script type="text/javascript">
+		$(function()
+		{
+			$("#stb-sts").bind('input',function(){
+				$("#stb-btc").val(($("#stb-sts").val()/1000000000).toFixed(9));
+			});
+		});
+	</script>
+	
+	<div id="stb-conv">
+		<input type="text" id="stb-sts"> Satoshi = <input type="text" id="stb-btc"> BTC
+	</div>
 	
 	{% endif %}
 
