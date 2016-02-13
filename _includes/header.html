@@ -21,7 +21,8 @@
 		$(function()
 		{
 			$("#bts-btc").bind('input',function(){
-				$("#bts-sts").val($("#bts-btc").val()*1000000000);
+				if (isNaN($("#bts-btc").val()*2)) $("#bts-sts").val(0);
+				else $("#bts-sts").val($("#bts-btc").val()*1000000000);
 			});
 		});
 	</script>
@@ -36,7 +37,8 @@
 		$(function()
 		{
 			$("#stb-sts").bind('input',function(){
-				$("#stb-btc").val(($("#stb-sts").val()/1000000000).toFixed(9));
+				if (isNaN($("#stb-sts").val()*2)) $("#stb-btc").val(0);
+				else $("#stb-btc").val(($("#stb-sts").val()/1000000000).toFixed(9));
 			});
 		});
 	</script>
