@@ -43,7 +43,17 @@
 	</script>
 	
 	<div id="bts-conv">
-		<input type="text" id="bts-btc"> BTC = <input type="text" id="bts-sts"> Satoshi
+		<div class="first-field">
+		<input type="text" id="bts-btc">
+	    <div class="unit">BTC</div>
+		</div>
+	
+	    <div class="equal-sign">=</div>
+	     
+	     <div class="second-field">
+	     <input type="text" id="bts-sts"> 
+	     <div class="unit">Satoshi</div>
+	     </div>
 	</div>
 	
 	{% elsif page.title == 'Satoshi to Bitcoin'  %}
@@ -74,7 +84,16 @@
 	</script>
 	
 	<div id="stb-conv">
-		<input type="text" id="stb-sts"> Satoshi = <input type="text" id="stb-btc"> BTC
+	<div class="first-field">
+		<input type="text" id="stb-sts"> <div class="unit">Satoshi</div>
+	</div>
+		
+		<div class="equal-sign">=</div>
+		
+		<div class="second-field">
+		<input type="text" id="stb-btc"> 
+		<div class="unit">BTC</div>
+		</div>
 	</div>
 	
 	{% endif %}
