@@ -18,11 +18,11 @@
 	{% if page.title == 'Bitcoin to Satoshi' %}
 	
 	<script type="text/javascript">
-		$(function()
+		jQuery(function()
 		{
-			$("#bts-btc").bind('input',function(){
-				if (isNaN($("#bts-btc").val()*2)) $("#bts-sts").val(0);
-				else $("#bts-sts").val($("#bts-btc").val()*1000000000);
+			jQuery("#bts-btc").bind('input',function(){
+				if (isNaN(jQuery("#bts-btc").val()*2)) jQuery("#bts-sts").val(0);
+				else jQuery("#bts-sts").val(jQuery("#bts-btc").val()*1000000000);
 			});
 		});
 	</script>
@@ -34,11 +34,11 @@
 	{% elsif page.title == 'Satoshi to Bitcoin'  %}
 	
 	<script type="text/javascript">
-		$(function()
+		jQuery(function()
 		{
-			$("#stb-sts").bind('input',function(){
-				if (isNaN($("#stb-sts").val()*2)) $("#stb-btc").val(0);
-				else $("#stb-btc").val(($("#stb-sts").val()/1000000000).toFixed(9));
+			jQuery("#stb-sts").bind('input',function(){
+				if (isNaN(jQuery("#stb-sts").val()*2)) jQuery("#stb-btc").val(0);
+				else jQuery("#stb-btc").val((jQuery("#stb-sts").val()/1000000000).toFixed(9));
 			});
 		});
 	</script>
