@@ -32,7 +32,7 @@
 				if (isNaN(s*2)) jQuery("#bts-sts").val(0);
 				else 
 				{
-					q = (s*100000000);
+					q = (s*100000000).toFixed(0);
 					a = q.toString().split(".");
 					a[0] = a[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
 					p = a.join('.');
