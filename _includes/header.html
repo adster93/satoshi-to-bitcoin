@@ -21,9 +21,23 @@
 		jQuery(function()
 		{
 			jQuery("#bts-btc").bind('input',function(){
-				if (isNaN(jQuery("#bts-btc").val()*2)) jQuery("#bts-sts").val(0);
-				else jQuery("#bts-sts").val(jQuery("#bts-btc").val()*100000000);
-				jQuery("#bts-sts").val(jQuery("#bts-sts").val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") );
+				s = jQuery("#bts-btc").val().toString().replace(/\,/g,'');
+				if (s>=1000)
+				{
+					b = s.toString().split(".");
+					b[0] = b[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
+					c = b.join('.');
+					jQuery("#bts-btc").val(c);
+				}
+				if (isNaN(s*2)) jQuery("#bts-sts").val(0);
+				else 
+				{
+					q = (s*100000000);
+					a = q.toString().split(".");
+					a[0] = a[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
+					p = a.join('.');
+					jQuery("#bts-sts").val(p);
+				}
 			});
 		});
 	</script>
@@ -37,10 +51,24 @@
 	<script type="text/javascript">
 		jQuery(function()
 		{
-			jQuery("#stb-sts").bind('input',function(){
-				if (isNaN(jQuery("#stb-sts").val()*2)) jQuery("#stb-btc").val(0);
-				else jQuery("#stb-btc").val((jQuery("#stb-sts").val()/100000000).toFixed(8));
-				jQuery("#stb-btc").val(jQuery("#stb-btc").val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") );
+			jQuery("#stb-sts").bind('input',function(){				
+				s = jQuery("#stb-sts").val().toString().replace(/\,/g,'');
+				if (s>=1000)
+				{
+					b = s.toString().split(".");
+					b[0] = b[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
+					c = b.join('.');
+					jQuery("#stb-sts").val(c);
+				}
+				if (isNaN(s*2)) jQuery("#stb-btc").val(0);
+				else 
+				{
+					q = (s/100000000).toFixed(8);
+					a = q.toString().split(".");
+					a[0] = a[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
+					p = a.join('.');
+					jQuery("#stb-btc").val(p);
+				}
 			});
 		});
 	</script>
