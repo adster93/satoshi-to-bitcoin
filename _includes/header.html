@@ -38,7 +38,7 @@
 		{
 			jQuery("#stb-sts").bind('input',function(){
 				if (isNaN(jQuery("#stb-sts").val()*2)) jQuery("#stb-btc").val(0);
-				else jQuery("#stb-btc").val((jQuery("#stb-sts").val()/100000000).toFixed(9));
+				else jQuery("#stb-btc").val((jQuery("#stb-sts").val()/100000000).toFixed(8));
 			});
 		});
 	</script>
