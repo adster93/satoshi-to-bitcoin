@@ -16,11 +16,67 @@
     {% endif %}
 
 	{% if page.title == 'Bitcoin to Satoshi' %}
-	
+
+  <script type="text/javascript">
+  jQuery.get( "http://api.coindesk.com/v1/bpi/currentprice.json", function( data ) {
+    parsedData = JSON.parse(data)
+    console.log('USD for bitcion', parsedData.bpi.USD.rate);
+    console.log('Satoshi/USD for bitcion', parsedData.bpi.USD.rate/100000000);
+
+});
+    jQuery(function()
+    {
+      jQuery("#btu-bts").bind('input',function(){
+        console.log('hello world before');
+
+        s = jQuery("#btu-bts").val().toString().replace(/\,/g,'');
+        if (s>=1000)
+        {
+          b = s.toString().split(".");
+          b[0] = b[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
+          c = b.join('.');
+          jQuery("#btu-bts").val(c);
+        }
+        if (isNaN(s*2)) jQuery("#bts-sts").val(0);
+        else
+        {
+          jQuery.get( "http://api.coindesk.com/v1/bpi/currentprice.json", function( data ) {
+            var parsedData = JSON.parse(data)
+            var bitcoinUSD = parsedData.bpi.USD.rate * s
+            var satoshiBitcoinUSD = (bitcoinUSD*0.00000001)
+            q = (satoshiBitcoinUSD).toFixed(8)
+            a = q.toString().split(".");
+            a[0] = a[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
+            p = a.join('.');
+            jQuery("#btus-stus").val(p);
+        });
+
+        }
+      });
+    });
+  </script>
+
+  <div id="bts-conv">
+    <div class="first-field">
+    <input type="text" id="btu-bts">
+      <div class="unit">Satoshi</div>
+    </div>
+
+      <div class="equal-sign">=</div>
+
+       <div class="second-field">
+       <input type="text" id="btus-stus">
+       <div class="unit">USD</div>
+       </div>
+  </div>
+
+
 	<script type="text/javascript">
 		jQuery(function()
 		{
 			jQuery("#bts-btc").bind('input',function(){
+        console.log('hello world before');
+
 				s = jQuery("#bts-btc").val().toString().replace(/\,/g,'');
 				if (s>=1000)
 				{
@@ -30,7 +86,7 @@
 					jQuery("#bts-btc").val(c);
 				}
 				if (isNaN(s*2)) jQuery("#bts-sts").val(0);
-				else 
+				else
 				{
 					q = (s*100000000).toFixed(0);
 					a = q.toString().split(".");
@@ -41,27 +97,30 @@
 			});
 		});
 	</script>
-	
+
 	<div id="bts-conv">
 		<div class="first-field">
 		<input type="text" id="bts-btc">
 	    <div class="unit">BTC</div>
 		</div>
-	
+
 	    <div class="equal-sign">=</div>
-	     
+
 	     <div class="second-field">
-	     <input type="text" id="bts-sts"> 
+	     <input type="text" id="bts-sts">
 	     <div class="unit">Satoshi</div>
 	     </div>
 	</div>
-	
+
+
+
 	{% elsif page.title == 'Satoshi to Bitcoin'  %}
-	
+
 	<script type="text/javascript">
 		jQuery(function()
 		{
-			jQuery("#stb-sts").bind('input',function(){				
+      console.log('heloooo');
+			jQuery("#stb-sts").bind('input',function(){
 				s = jQuery("#stb-sts").val().toString().replace(/\,/g,'');
 				if (s>=1000)
 				{
@@ -71,7 +130,7 @@
 					jQuery("#stb-sts").val(c);
 				}
 				if (isNaN(s*2)) jQuery("#stb-btc").val(0);
-				else 
+				else
 				{
 					q = (s/100000000).toFixed(8);
 					a = q.toString().split(".");
@@ -82,20 +141,20 @@
 			});
 		});
 	</script>
-	
+
 	<div id="stb-conv">
 	<div class="first-field">
 		<input type="text" id="stb-sts"> <div class="unit">Satoshi</div>
 	</div>
-		
+
 		<div class="equal-sign">=</div>
-		
+
 		<div class="second-field">
-		<input type="text" id="stb-btc"> 
+		<input type="text" id="stb-btc">
 		<div class="unit">BTC</div>
 		</div>
 	</div>
-	
+
 	{% endif %}
 
 
